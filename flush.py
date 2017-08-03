@@ -1,9 +1,6 @@
 import urllib2
 import re
-import random
-from multiprocessing.dummy import Pool as ThreadPool 
-
-headers = {'User-Agent':'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36'}
+import random from multiprocessing.dummy import Pool as ThreadPool headers = {'User-Agent':'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36'}
 proxyPool = []
 def get_proxy(proxyUrl):
     try:
@@ -39,8 +36,8 @@ def refreshBlog(url):
     changProxy()
     blog_eader = {
             'User-Agent':'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.152 Safari/537.36',
-            'Host':'blog.csdn.net',
-            'Referer':'http://blog.csdn.net/',
+            'Host':'',
+            'Referer':'',
             'GET':url
             }
     request = urllib2.Request(url,headers = blog_eader)
@@ -55,7 +52,7 @@ def refreshBlog(url):
 bloglist = []
 def refresh():
     for i in range(0,10000):
-        bloglist.append("http://blog.csdn.net/sujun10/article/details/76427703")
+        bloglist.append("")
     pool = ThreadPool(30)
     results = pool.map(refreshBlog, bloglist)
     pool.close()
